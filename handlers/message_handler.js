@@ -18,12 +18,12 @@ async function sendEmailToUser(name, email, message) {
   try {
     // nodemailer transport oluştur
     let transporter = nodemailer.createTransport({
-      host: process.env.SMPT_HOST,
-      port: process.env.SMPT_PORT,
+      host: process.env.SMPT_HOST1,
+      port: process.env.SMPT_PORT1,
       secure: true,
       auth: {
-        user: process.env.SMPT_MAIL,
-        pass: process.env.SMPT_PASSWORD
+        user: process.env.SMPT_MAIL1,
+        pass: process.env.SMPT_PASSWORD1
       }
     });
 
@@ -32,7 +32,7 @@ async function sendEmailToUser(name, email, message) {
       from: process.env.SMPT_MAIL1,
       to: email, // İletişim formunu oluşturan kişinin e-posta adresi
       subject: 'İletişim Formunuz Oluşturuldu.',
-      text: `Merhaba ${name},\n\nİletişim formunuz için teşekkür ederiz. En kısa sürede size geri döneceğiz.\n\nMesajınız: ${message}`,
+      text: `Merhaba ${name},\n\nİletişim formunuz için teşekkür ederiz. En kısa sürede size geri döneceğiz.\n`
     };
 
     // Email gönderme işlemi
@@ -48,19 +48,19 @@ async function sendEmailToYourself(name, email, subject, message) {
   try {
     // nodemailer transport oluştur
     let transporter = nodemailer.createTransport({
-      host: process.env.SMPT_HOST,
-      port: process.env.SMPT_PORT,
+      host: process.env.SMPT_HOST1,
+      port: process.env.SMPT_PORT1,
       secure: true,
       auth: {
-        user: process.env.SMPT_MAIL,
-        pass: process.env.SMPT_PASSWORD
+        user: process.env.SMPT_MAIL1,
+        pass: process.env.SMPT_PASSWORD1
       }
     });
 
     // Email içeriği
     let mailOptions = {
       from: process.env.SMPT_MAIL1,
-      to: 'tahakorkut02@gmail.com', // Kendi e-posta adresiniz
+      to: 'info@unixcyber.com.tr', // Kendi e-posta adresiniz
       replyTo: `"${name}" <${email}>`, // Gönderenin adı ve e-posta adresini kullanarak Reply-To'yu ayarla
       subject: `Yeni İletişim Formu Oluşturuldu: ${subject}`,
       text: `Yeni bir iletişim formu oluşturuldu.\n\nDetaylar:\nAdı: ${name}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj: ${message}`,
